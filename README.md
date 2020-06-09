@@ -13,7 +13,7 @@ Install:
 
     v install amoyyy.openblas
 
-Usage: 
+Demo: 
 
     import amoyyy.openblas
     fn main(){
