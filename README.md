@@ -5,7 +5,7 @@ V Project: https://github.com/vlang/v
 
 OpenBLAS Project: https://github.com/xianyi/OpenBLAS
 
-Dynamic library libopenblas.so file for x86 linux provided by default.
+Dynamic library libopenblas.so file for x86 linux platform provided by default.
 
 If needed, compile and install OpenBLAS library by yourself in the thirdparty directory. 
 
