@@ -5,6 +5,10 @@ V Project: https://github.com/vlang/v
 
 OpenBLAS Project: https://github.com/xianyi/OpenBLAS
 
+Compile Install OpenBLAS library in thirdparty directory the import openblas module in your Vlang project.
+
+Dynamic library is provided by default, modify the link flag as you like.
+
 Usage: 
 
     import openblas
