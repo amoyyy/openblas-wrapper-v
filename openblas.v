@@ -216,6 +216,10 @@ fn sdot(n int, x &[]f32, incx int, y &[]f32, incy int) f32{
 pub fn ddot(n int, x &[]f64, incx int, y &[]f64, incy int) f64{
     return C.cblas_ddot(n, &x[0], incx, &y[0], incy)
 }
+//[inline]
+pub fn dgemm(Order ORDER, TransA TRANSPOSE, TransB TRANSPOSE, M int, N int, K int, alpha f64, aa &[]f64, lda int, bb &[]f64, ldb int, beta f64, mut cc &[]f64, ldc int){
+    C.cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, &aa[0], lda, &bb[0], ldb, beta, &cc[0], ldc)
+}
 /*
 fn cdotu(n int, x voidptr, incx int, y voidptr, incy int) f32
 fn cdotc(n int, x voidptr, incx int, y voidptr, incy int) f32
