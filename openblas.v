@@ -1,7 +1,7 @@
 module openblas
 
-#flag -I ../thirdparty/OpenBLAS-0.3.9/include
-#flag -L ../thirdparty/OpenBLAS-0.3.9/lib
+#flag -I thirdparty/OpenBLAS-0.3.9/include
+#flag -L thirdparty/OpenBLAS-0.3.9/lib
 #flag -lopenblas
 #flag -pthread
 
