@@ -9,9 +9,14 @@ Compile Install OpenBLAS library in thirdparty directory the import openblas mod
 
 Dynamic library is provided by default, modify the link flag as you like.
 
+Install:
+
+    v install amoyyy.openblas
+
+
 Usage: 
 
-    import openblas
+    import amoyyy.openblas
     fn main(){
         a := [1.0,3.0,1.0,-3.0,4.0,-1.0]         
         b := [1.0,4.0,1.0,-3.0,4.0,-1.0]  
