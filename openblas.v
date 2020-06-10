@@ -408,8 +408,8 @@ fn chpmv(order ORDER, uplo UPLO, n int, alpha voidptr, AP voidptr, x voidptr, in
 fn zhpmv(order ORDER, uplo UPLO, n int, alpha voidptr, AP voidptr, x voidptr, incx int, beta voidptr, y voidptr, incy int)
 */
 //[inline]
-pub fn sgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha f32, A &[]f32, lda int, B &[]f32, ldb int, beta f32, cc &[]f32, ldc int){
-    C.cblas_sgemm(Order, TransA, TransB, M, N, K, alpha, &A[0], lda, &B[0], ldb, beta, &cc[0], ldc)
+pub fn sgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, M int, N int, K int, alpha f32, A &[]f32, lda int, B &[]f32, ldb int, beta f32, cc &[]f32, ldc int){
+    C.cblas_sgemm(order, transA, transB, M, N, K, alpha, &A[0], lda, &B[0], ldb, beta, &cc[0], ldc)
 }
 //[inline]
 pub fn dgemm(Order ORDER, TransA TRANSPOSE, TransB TRANSPOSE, M int, N int, K int, alpha f64, A &[]f64, lda int, B &[]f64, ldb int, beta f64, cc &[]f64, ldc int){
