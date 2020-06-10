@@ -412,8 +412,8 @@ pub fn sgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, M int, N int, K in
     C.cblas_sgemm(order, transA, transB, M, N, K, alpha, &A[0], lda, &B[0], ldb, beta, &cc[0], ldc)
 }
 //[inline]
-pub fn dgemm(Order ORDER, TransA TRANSPOSE, TransB TRANSPOSE, M int, N int, K int, alpha f64, A &[]f64, lda int, B &[]f64, ldb int, beta f64, cc &[]f64, ldc int){
-    C.cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, &A[0], lda, &B[0], ldb, beta, &cc[0], ldc)
+pub fn dgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, M int, N int, K int, alpha f64, A &[]f64, lda int, B &[]f64, ldb int, beta f64, cc &[]f64, ldc int){
+    C.cblas_dgemm(order, transA, transB, M, N, K, alpha, &A[0], lda, &B[0], ldb, beta, &cc[0], ldc)
 }
 /*
 fn cgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
