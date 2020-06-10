@@ -197,19 +197,17 @@ fn C.cblas_sgeadd(CORDER ORDER, crows int, ccols int, calpha f32, A &f32, clda i
 fn C.cblas_dgeadd(CORDER ORDER, crows int, ccols int, calpha f64, A &f64, clda int, cbeta f64, c &f64, cldc int) 
 fn C.cblas_cgeadd(CORDER ORDER, crows int, ccols int, calpha &f32, A &f32, clda int, cbeta &f32, c &f32, cldc int) 
 fn C.cblas_zgeadd(CORDER ORDER, crows int, ccols int, calpha &f64, A &f64, clda int, cbeta &f64, c &f64, cldc int) 
-
-
 //*****************************************************************************
 //[inline]
-fn sdsdot(n int, alpha f32, x &[]f32, incx int, y &[]f32, incy int) f32{
+pub fn sdsdot(n int, alpha f32, x &[]f32, incx int, y &[]f32, incy int) f32{
     return C.cblas_sdsdot(n, alpha, &x[0], incx, &y[0], incy)
 }
 //[inline]
-fn dsdot(n int, x &[]f32, incx int, y &[]f32, incy int) f64 {
+pub fn dsdot(n int, x &[]f32, incx int, y &[]f32, incy int) f64 {
     return C.cblas_dsdot(n, &x[0], incx, &y[0], incy)
 }
 //[inline]
-fn sdot(n int, x &[]f32, incx int, y &[]f32, incy int) f32{
+pub fn sdot(n int, x &[]f32, incx int, y &[]f32, incy int) f32{
     return C.cblas_sdot(n, &x[0], incx, &y[0], incy)
 }
 //[inline]
@@ -217,30 +215,88 @@ pub fn ddot(n int, x &[]f64, incx int, y &[]f64, incy int) f64{
     return C.cblas_ddot(n, &x[0], incx, &y[0], incy)
 }
 //[inline]
-pub fn dgemm(Order ORDER, TransA TRANSPOSE, TransB TRANSPOSE, M int, N int, K int, alpha f64, aa &[]f64, lda int, bb &[]f64, ldb int, beta f64, mut cc &[]f64, ldc int){
-    C.cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, &aa[0], lda, &bb[0], ldb, beta, &cc[0], ldc)
+pub fn cdotu(n int, x voidptr, incx int, y voidptr, incy int) f32{
+    return C.cblas_cdotu(n, &x, incx, &y, incy)
 }
+//[inline]
+pub fn cdotc(n int, x voidptr, incx int, y voidptr, incy int) f32{
+    return C.cblas_cdotc(n, &x, incx, &y ,incy)
+}
+//[inline]
+pub fn zdotu(n int, x voidptr, incx int, y voidptr, incy int) f64{
+    return C.cblas_zdotu(n, &x, incx, &y, incy)
+}
+//[inline]
+pub fn zdotc(n int, x voidptr, incx int, y voidptr, incy int) f64{
+    return C.cblas_zdotc(n, &x, incx, &y, incy)
+}
+//[inline]
+pub fn cdotu_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr){
+    C.cblas_cdotu_sub(n, &x, incx, &y, incy, &ret)
+}
+//[inline]
+pub fn cdotc_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr){
+    C.cblas_cdotc_sub(n, &x, incx, &y, incy, &ret)
+}
+//[inline]
+pub fn zdotu_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr){
+    C.cblas_zdotu_sub(n, &x, incx, &y, incy, &ret)
+}
+//[inline]
+pub fn zdotc_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr){
+    C.cblas_zdotc_sub(n, &x, incx, &y, incy, &ret)
+}
+//[inline]
+pub fn sasum(n int, x &[]f32, incx int) f32{
+    return C.cblas_sasum(n, &x[0], incx)
+}
+//[inline]
+pub fn dasum(n int, x &[]f64, incx int) f64{
+    return C.cblas_dasum(n, &x[0], incx)
+}
+//[inline]
+pub fn scasum(n int, x voidptr, incx int) f32{
+    return C.cblas_scasum(n, &x, incx)
+}
+//[inline]
+pub fn dzasum(n int, x voidptr, incx int) f64{
+    return C.cblas_dzasum(n, &x, incx)
+}
+//[inline]
+pub fn ssum(n int, x &[]f32, incx int) f32{
+    return C.cblas_ssum(n, &x[0], incx)
+}
+//[inline]
+pub fn dsum(n int, x &[]f64, incx int) f64{
+    return C.cblas_dsum(n, &x[0], incx)
+}
+//[inline]
+pub fn scsum(n int, x voidptr, incx int) f32{
+    return C.cblas_scsum(n, &x, incx)
+}
+//[inline]
+pub fn dzsum(n int, x voidptr, incx int) f64{
+    return C.cblas_dzsum(n, &x, incx)
+}
+//[inline]
+pub fn snrm2(n int, x &[]f32, incx int) f32{
+    return C.cblas_snrm2(n, &x[0], incx)
+}
+//[inline]
+pub fn dnrm2(n int, x &[]f64, incx int) f64{
+    return C.cblas_dnrm2(n, &x[0], incx)
+}
+//[inline]
+pub fn scnrm2(n int, x voidptr, incx int) f32{
+    return C.cblas_scnrm2(n, &x, incx)
+}
+//[inline]
+pub fn dznrm2(n int, x voidptr, incx int) f64{
+    return C.cblas_dznrm2(n, &x, incx)
+}
+
 /*
-fn cdotu(n int, x voidptr, incx int, y voidptr, incy int) f32
-fn cdotc(n int, x voidptr, incx int, y voidptr, incy int) f32
-fn zdotu(n int, x voidptr, incx int, y voidptr, incy int) f64
-fn zdotc(n int, x voidptr, incx int, y voidptr, incy int) f64
-fn cdotu_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr)
-fn cdotc_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr)
-fn zdotu_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr)
-fn zdotc_sub(n int, x voidptr, incx int, y voidptr, incy int, ret voidptr)
-fn sasum(n int, x &f32, incx int) f32
-fn dasum(n int, x &f64, incx int) f64
-fn scasum(n int, x voidptr, incx int) f32
-fn dzasum(n int, x voidptr, incx int) f64
-fn ssum(n int, x &f32, incx int) f32
-fn dsum(n int, x &f64, incx int) f64
-fn scsum(n int, x voidptr, incx int) f32
-fn dzsum(n int, x voidptr, incx int) f64
-fn snrm2(n int, x &f32, incx int) f32
-fn dnrm2(n int, x &f64, incx int) f64
-fn scnrm2(n int, x voidptr, incx int) f32
-fn dznrm2(n int, x voidptr, incx int) f64
+
 // `size_t` : replaced with `int`
 fn isamax(n int, x &f32, incx int) int
 fn idamax(n int, x &f64, incx int) int
@@ -350,12 +406,16 @@ fn chbmv(order ORDER, uplo UPLO, n int, K int, alpha voidptr, A voidptr, lda int
 fn zhbmv(order ORDER, uplo UPLO, n int, K int, alpha voidptr, A voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
 fn chpmv(order ORDER, uplo UPLO, n int, alpha voidptr, AP voidptr, x voidptr, incx int, beta voidptr, y voidptr, incy int)
 fn zhpmv(order ORDER, uplo UPLO, n int, alpha voidptr, AP voidptr, x voidptr, incx int, beta voidptr, y voidptr, incy int)
-fn sgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha f32, A &f32, lda int, B &f32, ldb int, beta f32, c &f32, ldc int)
+*/
 //[inline]
-pub fn dgemm(Order ORDER, TransA TRANSPOSE, TransB TRANSPOSE, M int, N int, K int, alpha f64, aa &[]f64, lda int, bb &[]f64, ldb int, beta f64, mut cc &[]f64, ldc int){
-    C.cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, &aa[0], lda, &bb[0], ldb, beta, &cc[0], ldc)
+pub fn sgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha f32, A &[]f32, lda int, B &[]f32, ldb int, beta f32, cc &[]f32, ldc int){
+    C.cblas_sgemm(Order, TransA, TransB, M, N, K, alpha, &A[0], lda, &B[0], ldb, beta, &cc[0], ldc)
 }
-fn dgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha f64, A &f64, lda int, B &f64, ldb int, beta f64, c &f64, ldc int)
+//[inline]
+pub fn dgemm(Order ORDER, TransA TRANSPOSE, TransB TRANSPOSE, M int, N int, K int, alpha f64, A &[]f64, lda int, B &[]f64, ldb int, beta f64, cc &[]f64, ldc int){
+    C.cblas_dgemm(Order, TransA, TransB, M, N, K, alpha, &A[0], lda, &B[0], ldb, beta, &cc[0], ldc)
+}
+/*
 fn cgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
 fn cgemm3m(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
 fn zgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
@@ -386,7 +446,9 @@ fn cherk(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha f32, A voi
 fn zherk(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha f64, A voidptr, lda int, beta f64, c voidptr, ldc int)
 fn cher2k(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta f32, c voidptr, ldc int)
 fn zher2k(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta f64, c voidptr, ldc int)
-
+// /fn xerbla(p int, rout &byte, form &byte, ...)
+*/
+/*** BLAS extensions ***//*
 fn saxpby(n int, alpha f32, x &f32, incx int,beta f32, y &f32, incy int)
 fn daxpby(n int, alpha f64, x &f64, incx int,beta f64, y &f64, incy int)
 fn caxpby(n int, alpha voidptr, x voidptr, incx int,beta voidptr, y voidptr, incy int)
