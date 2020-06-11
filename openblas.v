@@ -294,38 +294,128 @@ pub fn scnrm2(n int, x voidptr, incx int) f32{
 pub fn dznrm2(n int, x voidptr, incx int) f64{
     return C.cblas_dznrm2(n, &x, incx)
 }
+//[inline]
+pub fn isamax(n int, x &[]f32, incx int) int{
+    return C.cblas_isamax(n, &x[0], incx)
+}
+//[inline]
+pub fn idamax(n int, x &[]f64, incx int) int{
+    return C.cblas_idamax(n, &x[0], incx)
+}
+//[inline]
+pub fn icamax(n int, x voidptr, incx int) int{
+    return C.cblas_icamax(n, &x, incx)
+}
+//[inline]
+pub fn izamax(n int, x voidptr, incx int) int{
+    return C.cblas_izamax(n, &x, incx)
+}
+//[inline]
+pub fn isamin(n int, x &[]f32, incx int) int{
+    return C.cblas_isamin(n, &x[0], incx)
+}
+//[inline]
+pub fn idamin(n int, x &f64, incx int) int{
+    return C.cblas_idamin(n, &x[0], incx)
+}
+//[inline]
+pub fn icamin(n int, x voidptr, incx int) int{
+    return C.cblas_icamin(n, &x, incx)
+}
+//[inline]
+pub fn izamin(n int, x voidptr, incx int) int{
+    return C.cblas_izamin(n, &x, incx)
+}
+//[inline]
+pub fn ismax(n int, x &[]f32, incx int) int{
+    return C.cblas_ismax(n, &x[0], incx)
+}
+//[inline]
+pub fn idmax(n int, x &[]f64, incx int) int{
+    return C.cblas_idmax(n, &x[0], incx)
+}
+//[inline]
+pub fn icmax(n int, x voidptr, incx int) int{
+    return C.cblas_icmax(n, &x, incx)
+}
+//[inline]
+pub fn izmax(n int, x voidptr, incx int) int{
+    return C.cblas_izmax(n, &x, incx)
+}
+//[inline]
+pub fn ismin(n int, x &[]f32, incx int) int{
+    return C.cblas_ismin(n, &x[0], incx)
+}
+//[inline]
+pub fn idmin(n int, x &[]f64, incx int) int{
+    return C.cblas_idmin(n, &x[0], incx)
+}
+//[inline]
+pub fn icmin(n int, x voidptr, incx int) int{
+    return C.cblas_icmin(n, &x, incx)
+}
+//[inline]
+pub fn izmin(n int, x voidptr, incx int) int{
+    return C.cblas_izmin(n, &x, incx)
+}
+//[inline]
+fn saxpy(n int, alpha f32, x &[]f32, incx int, y &[]f32, incy int){
+    C.cblas_saxpy(n, alpha, &x[0], incx, &y[0], incy)
+}
+//[inline]
+fn daxpy(n int, alpha f64, x &[]f64, incx int, y &[]f64, incy int){
+    C.cblas_daxpy(n, alpha, &x[0], incx, &y[0], incy)
+}
+//[inline]
+fn caxpy(n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int){
+    C.cblas_caxpy(n, alpha, &x, incx, &y, incy)
+}
+//[inline]
+fn zaxpy(n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int){
+    C.cblas_zaxpy(n, alpha, &x, incx, &y, incy)
+}
+//[inline]
+fn scopy(n int, x &[]f32, incx int, y &[]f32, incy int){
+    C.cblas_scopy(n, &x[0], incx, &y[0], incy)
+}
+//[inline]
+fn dcopy(n int, x &[]f64, incx int, y &[]f64, incy int){
+    C.cblas_dcopy(n, &x[0], incx, &y[0], incy)
+}
+//[inline]
+fn ccopy(n int, x voidptr, incx int, y voidptr, incy int){
+    C.cblas_ccopy(n, &x, incx, &y, incy)
+}
+//[inline]
+fn zcopy(n int, x voidptr, incx int, y voidptr, incy int){
+    C.cblas_zcopy(n, &x, incx, &y, incy)
+}
+//[inline]
+fn sswap(n int, x &[]f32, incx int, y &[]f32, incy int){
+    C.cblas_sswap(n, &x[0], incx, &y[0], incy)
+}
+//[inline]
+fn dswap(n int, x &[]f64, incx int, y &[]f64, incy int){
+    C.cblas_dswap(n, &x[0], incx, &y[0], incy)
+}
+//[inline]
+fn cswap(n int, x voidptr, incx int, y voidptr, incy int){
+    C.cblas_cswap(n, &x, incx, &y, incy)
+}
+//[inline]
+fn zswap(n int, x voidptr, incx int, y voidptr, incy int){
+    C.cblas_zswap(n, &x, incx, &y, incy)
+}
+
+//[inline]
+//[inline]
+//[inline]
+//[inline]
+
+//[inline]
 
 /*
 
-// `size_t` : replaced with `int`
-fn isamax(n int, x &f32, incx int) int
-fn idamax(n int, x &f64, incx int) int
-fn icamax(n int, x voidptr, incx int) int
-fn izamax(n int, x voidptr, incx int) int
-fn isamin(n int, x &f32, incx int) int
-fn idamin(n int, x &f64, incx int) int
-fn icamin(n int, x voidptr, incx int) int
-fn izamin(n int, x voidptr, incx int) int
-fn ismax(n int, x &f32, incx int) int
-fn idmax(n int, x &f64, incx int) int
-fn icmax(n int, x voidptr, incx int) int
-fn izmax(n int, x voidptr, incx int) int
-fn ismin(n int, x &f32, incx int) int
-fn idmin(n int, x &f64, incx int) int
-fn icmin(n int, x voidptr, incx int) int
-fn izmin(n int, x voidptr, incx int) int
-fn saxpy(n int, alpha f32, x &f32, incx int, y &f32, incy int)
-fn daxpy(n int, alpha f64, x &f64, incx int, y &f64, incy int)
-fn caxpy(n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int)
-fn zaxpy(n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int)
-fn scopy(n int, x &f32, incx int, y &f32, incy int)
-fn dcopy(n int, x &f64, incx int, y &f64, incy int)
-fn ccopy(n int, x voidptr, incx int, y voidptr, incy int)
-fn zcopy(n int, x voidptr, incx int, y voidptr, incy int)
-fn sswap(n int, x &f32, incx int, y &f32, incy int)
-fn dswap(n int, x &f64, incx int, y &f64, incy int)
-fn cswap(n int, x voidptr, incx int, y voidptr, incy int)
-fn zswap(n int, x voidptr, incx int, y voidptr, incy int)
 fn srot(n int, x &f32, incx int, y &f32, incy int, c f32, s f32)
 fn drot(n int, x &f64, incx int, y &f64, incy int, c f64, s f64)
 fn srotg(a &f32, b &f32, c &f32, s &f32)
@@ -420,6 +510,7 @@ fn cgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, a
 fn cgemm3m(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
 fn zgemm(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
 fn zgemm3m(order ORDER, transA TRANSPOSE, transB TRANSPOSE, m int, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
+*//*
 fn ssymm(order ORDER, side SIDE, uplo UPLO, m int, n int, alpha f32, A &f32, lda int, B &f32, ldb int, beta f32, c &f32, ldc int)
 fn dsymm(order ORDER, side SIDE, uplo UPLO, m int, n int, alpha f64, A &f64, lda int, B &f64, ldb int, beta f64, c &f64, ldc int)
 fn csymm(order ORDER, side SIDE, uplo UPLO, m int, n int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta voidptr, c voidptr, ldc int)
@@ -447,8 +538,8 @@ fn zherk(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha f64, A voi
 fn cher2k(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta f32, c voidptr, ldc int)
 fn zher2k(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta f64, c voidptr, ldc int)
 // /fn xerbla(p int, rout &byte, form &byte, ...)
-*/
-/*** BLAS extensions ***//*
+
+/*** BLAS extensions ***/
 fn saxpby(n int, alpha f32, x &f32, incx int,beta f32, y &f32, incy int)
 fn daxpby(n int, alpha f64, x &f64, incx int,beta f64, y &f64, incy int)
 fn caxpby(n int, alpha voidptr, x voidptr, incx int,beta voidptr, y voidptr, incy int)
