@@ -18,7 +18,7 @@ Demo:
     import amoyyy.openblas
     import math.complex as cplx
     fn main(){
-        // dgemm method demo 
+        // dgemm demo 
         a := [1.0,3.0,1.0,-3.0,4.0,-1.0]         
         b := [1.0,4.0,1.0,-3.0,4.0,-1.0]  
         mut c := [0.5,0.5,0.5,1.5,0.5,2.5,0.5,0.5,0.5]       
@@ -31,11 +31,11 @@ Demo:
         openblas.dgemm(openblas.ORDER.row_major, openblas.TRANSPOSE.no_trans, openblas.TRANSPOSE.no_trans, mm, nn, kk, alpha, a, kk, b, nn, beta, mut c, nn)
         println(c)
     
-        // ddot method demo 
+        // ddot demo 
         res := openblas.ddot(6, a, 1, b, 1)
         println(res)
         
-        // zdscal method demo
+        // zdscal demo
         mut e := [cplx.complex(1,2), cplx.complex(3,4), cplx.complex(5,6)]
         println(e)
         openblas.zdscal(3, 10.0, e ,1)
