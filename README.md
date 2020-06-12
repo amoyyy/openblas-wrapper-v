@@ -5,7 +5,7 @@ V Project: https://github.com/vlang/v
 
 OpenBLAS Project: https://github.com/xianyi/OpenBLAS
 
-Compile and install OpenBLAS library on your platform. The guidance is provided in "thirdparty/README.md" file. 
+Compile and install OpenBLAS library on your platform. The guidance is available in "thirdparty/README.md". 
 
 Install:
 
