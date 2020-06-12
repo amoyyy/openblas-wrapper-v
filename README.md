@@ -16,21 +16,28 @@ Install:
 Demo: 
 
     import amoyyy.openblas
+    import math.complex as cplx
     fn main(){
+        // dgemm method demo
         a := [1.0,3.0,1.0,-3.0,4.0,-1.0]         
         b := [1.0,4.0,1.0,-3.0,4.0,-1.0]  
-        mut c := [0.5,0.5,0.5,1.5,0.5,2.5,0.5,0.5,0.5]
-        
+        mut c := [0.5,0.5,0.5,1.5,0.5,2.5,0.5,0.5,0.5]       
         mm := 3 // row of A and C
         nn := 3 // col of B and C
         kk := 2 // col of A and row of B
- 
         alpha := 1.0
         beta := 0.0
-
+        
         openblas.dgemm(openblas.ORDER.row_major, openblas.TRANSPOSE.no_trans, openblas.TRANSPOSE.no_trans, mm, nn, kk, alpha, a, kk, b, nn, beta, mut c, nn)
         println(c)
     
+        // ddot method demo
         res := openblas.ddot(6, a, 1, b, 1)
         println(res)
+        
+        // zdscal method demo
+        mut e := [cplx.complex(1,2), cplx.complex(3,4), cplx.complex(5,6)]
+        println(e)
+        openblas.zdscal(3, 10.0, e ,1)
+        println(e)
     }
