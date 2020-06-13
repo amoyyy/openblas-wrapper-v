@@ -163,13 +163,31 @@ pub fn ctrsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]mc
 pub fn ztrsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]mcx.Complex, lda int, x &[]mcx.Complex, incx int){
     C.cblas_ztrsv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
 }
+//[inline]
+pub fn ctrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]mcx.Complex, lda int, x &[]mcx.Complex, incx int){
+    C.cblas_ctrmv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
+}
+//[inline]
+pub fn ztrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]mcx.Complex, lda int, x &[]mcx.Complex, incx int){
+    C.cblas_ztrmv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
+}
+//[inline]
+pub fn cher(order ORDER, uplo UPLO, n int, alpha f32, x &[]mcx.Complex, incx int, A &[]mcx.Complex, lda int){
+    C.cblas_cher(order, uplo, n, alpha, &x[0], incx, &A[0], lda)
+}
+//[inline]
+pub fn zher(order ORDER, uplo UPLO, n int, alpha f64, x &[]mcx.Complex, incx int, A &[]mcx.Complex, lda int){
+    C.cblas_zher(order, uplo, n, alpha, &x[0], incx, &A[0], lda)
+}
+//[inline]
+pub fn cher2(order ORDER, uplo UPLO, n int, alpha mcx.Complex, x &[]mcx.Complex, incx int, y &[]mcx.Complex, incy int, A &[]mcx.Complex, lda int){
+    C.cblas_cher2(order, uplo, n, &alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+}
+//[inline]
+pub fn zher2(order ORDER, uplo UPLO, n int, alpha mcx.Complex, x &[]mcx.Complex, incx int, y &[]mcx.Complex, incy int, A &[]mcx.Complex, lda int){
+    C.cblas_zher2(order, uplo, n, &alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+}
 /*
-pub fn ctrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A voidptr, lda int, x voidptr, incx int)
-pub fn ztrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A voidptr, lda int, x voidptr, incx int)
-pub fn cher(order ORDER, uplo UPLO, n int, alpha f32, x voidptr, incx int, A voidptr, lda int)
-pub fn zher(order ORDER, uplo UPLO, n int, alpha f64, x voidptr, incx int, A voidptr, lda int)
-pub fn cher2(order ORDER, uplo UPLO, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
-pub fn zher2(order ORDER, uplo UPLO, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
 pub fn cgbmv(order ORDER, transA TRANSPOSE, m int, n int, KL int, KU int, alpha voidptr, A voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
 pub fn zgbmv(order ORDER, transA TRANSPOSE, m int, n int, KL int, KU int, alpha voidptr, A voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
 pub fn ctbmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, K int, A voidptr, lda int, x voidptr, incx int)

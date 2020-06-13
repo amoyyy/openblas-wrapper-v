@@ -168,19 +168,23 @@ pub fn strmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]f3
 pub fn dtrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]f64, lda int, x &[]f64, incx int){
     C.cblas_dtrmv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
 }
-
 //[inline]
+pub fn ssyr(order ORDER, uplo UPLO, n int, alpha f32, x &[]f32, incx int, A &[]f32, lda int){
+    C.cblas_ssyr(order, uplo, n, alpha, &x[0], incx, &A[0], lda)
+}
 //[inline]
-
+pub fn dsyr(order ORDER, uplo UPLO, n int, alpha f64, x &[]f64, incx int, A &[]f64, lda int){
+    C.cblas_dsyr(order, uplo, n, alpha, &x[0], incx, &A[0], lda)
+}
+//[inline]
+pub fn ssyr2(order ORDER, uplo UPLO,n int, alpha f32, x &[]f32, incx int, y &[]f32, incy int, A &[]f32, lda int){
+    C.cblas_ssyr2(order, uplo, n, &alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+}
+//[inline]
+pub fn dsyr2(order ORDER, uplo UPLO, n int, alpha f64, x &[]f64, incx int, y &[]f64, incy int, A &[]f64, lda int){
+    C.cblas_dsyr2(order, uplo, n, &alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+}
 /*
-pub fn ssyr(order ORDER, uplo UPLO, n int, alpha f32, x &f32, incx int, A &f32, lda int)
-pub fn dsyr(order ORDER, uplo UPLO, n int, alpha f64, x &f64, incx int, A &f64, lda int)
-pub fn cher(order ORDER, uplo UPLO, n int, alpha f32, x voidptr, incx int, A voidptr, lda int)
-pub fn zher(order ORDER, uplo UPLO, n int, alpha f64, x voidptr, incx int, A voidptr, lda int)
-pub fn ssyr2(order ORDER, uplo UPLO,n int, alpha f32, x &f32, incx int, y &f32, incy int, A &f32, lda int)
-pub fn dsyr2(order ORDER, uplo UPLO, n int, alpha f64, x &f64, incx int, y &f64, incy int, A &f64, lda int)
-pub fn cher2(order ORDER, uplo UPLO, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
-pub fn zher2(order ORDER, uplo UPLO, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
 pub fn sgbmv(order ORDER, transA TRANSPOSE, m int, n int, KL int, KU int, alpha f32, A &f32, lda int, x &f32, incx int, beta f32, y &f32, incy int)
 pub fn dgbmv(order ORDER, transA TRANSPOSE, m int, n int, KL int, KU int, alpha f64, A &f64, lda int, x &f64, incx int, beta f64, y &f64, incy int)
 pub fn cgbmv(order ORDER, transA TRANSPOSE, m int, n int, KL int, KU int, alpha voidptr, A voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
