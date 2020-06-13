@@ -2,6 +2,7 @@ module openblas
 import math.complex as mcx
 
 // WARNING: complex, double precision supported in v
+
 //[inline]
 pub fn cdotu(n int, x &[]mcx.Complex, incx int, y &[]mcx.Complex, incy int) f32{
     return C.cblas_cdotu(n, &x[0], incx, &y[0], incy)
