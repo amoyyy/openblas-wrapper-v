@@ -84,8 +84,8 @@ fn C.cblas_sgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha f32, a &f32, 
 fn C.cblas_dgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha f64, a &f64, lda int, x &f64, incx int, beta f64, y &f64, incy int)
 fn C.cblas_cgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha voidptr, a voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
 fn C.cblas_zgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha voidptr, a voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
-fn C.cblas_sger(order ORDER, m int, n int, float   alpha, x &f32, incx int, y &f32, incy int, A &f32, lda int)
-fn C.cblas_dger(order ORDER, m int, n int, double  alpha, x &f64, incx int, y &f64, incy int, A &f64, lda int)
+fn C.cblas_sger(order ORDER, m int, n int, alpha f32, x &f32, incx int, y &f32, incy int, A &f32, lda int)
+fn C.cblas_dger(order ORDER, m int, n int, alpha f64, x &f64, incx int, y &f64, incy int, A &f64, lda int)
 fn C.cblas_cgeru(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
 fn C.cblas_cgerc(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
 fn C.cblas_zgeru(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
@@ -178,7 +178,7 @@ fn C.cblas_cherk(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha f3
 fn C.cblas_zherk(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha f64, A voidptr, lda int, beta f64, c voidptr, ldc int)
 fn C.cblas_cher2k(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta f32, c voidptr, ldc int)
 fn C.cblas_zher2k(order ORDER, uplo UPLO, trans TRANSPOSE, n int, K int, alpha voidptr, A voidptr, lda int, B voidptr, ldb int, beta f64, c voidptr, ldc int)
-// /fn C.cblas_xerbla(p int, rout &byte, form &byte, ...)
+fn C.cblas_xerbla(p int, rout byteptr, form byteptr, other voidptr)
 
 /*** BLAS extensions ***/
 fn C.cblas_saxpby(n int, alpha f32, x &f32, incx int,beta f32, y &f32, incy int)

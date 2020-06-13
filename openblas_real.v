@@ -128,24 +128,31 @@ pub fn srotmg(d1 f32, d2 f32, b1 f32, b2 f32, P &[]f32){
 pub fn drotmg(d1 f64, d2 f64, b1 f64, b2 f32, P &[]f64){
     C.cblas_srotmg(&d1, &d2, &b1, b2, &P[0])
 }
+//[inline]
 pub fn sscal(n int, alpha f32, x &[]f32, incx int){
     C.cblas_sscal(n, alpha, &x[0], incx)
 }
+//[inline]
 pub fn dscal(n int, alpha f64, x &[]f64, incx int){
     C.cblas_dscal(n, alpha, &x[0], incx)
 }
 //[inline]
+pub fn sgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha f32, a &[]f32, lda int, x &[]f32, incx int, beta f32, y &[]f32, incy int){
+    C.cblas_sgemv(order, trans, m, n, alpha, &a[0], lda, &x[0], incx, beta, &y[0], incy)
+}
 //[inline]
+pub fn dgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha f64, a &[]f64, lda int, x &[]f64, incx int, beta f64, y &[]f64, incy int){
+    C.cblas_dgemv(order, trans, m, n, alpha, &a[0], lda, &x[0], incx, beta, &y[0], incy)
+}
 //[inline]
+pub fn sger(order ORDER, m int, n int, alpha f32, x &f32, incx int, y &f32, incy int, A &f32, lda int){
+    C.cblas_sger(order, m, n, alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+}
 //[inline]
-
+pub fn dger(order ORDER, m int, n int, alpha f64, x &f64, incx int, y &f64, incy int, A &f64, lda int){
+    C.cblas_dger(order, m, n, alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+}
 /*
-pub fn sgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha f32, a &f32, lda int, x &f32, incx int, beta f32, y &f32, incy int)
-pub fn dgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha f64, a &f64, lda int, x &f64, incx int, beta f64, y &f64, incy int)
-pub fn cgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha voidptr, a voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
-pub fn zgemv(order ORDER, trans TRANSPOSE, m int, n int, alpha voidptr, a voidptr, lda int, x voidptr, incx int, beta voidptr, y voidptr, incy int)
-pub fn sger(order ORDER, m int, n int, float   alpha, x &f32, incx int, y &f32, incy int, A &f32, lda int)
-pub fn dger(order ORDER, m int, n int, double  alpha, x &f64, incx int, y &f64, incy int, A &f64, lda int)
 pub fn cgeru(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
 pub fn cgerc(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
 pub fn zgeru(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
