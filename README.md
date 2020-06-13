@@ -34,7 +34,7 @@ Demo:
         res := openblas.ddot(6, a, 1, b, 1)
         println(res)
         
-        // zdscal
+        // zdscal, only `z` method (for double Complex) is supported in builtin v language.
         mut e := [mcp.complex(1,2), mcp.complex(3,4), mcp.complex(5,6)]
         println(e)
         openblas.zdscal(3, 10.0, e ,1)
