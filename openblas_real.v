@@ -152,19 +152,27 @@ pub fn sger(order ORDER, m int, n int, alpha f32, x &f32, incx int, y &f32, incy
 pub fn dger(order ORDER, m int, n int, alpha f64, x &f64, incx int, y &f64, incy int, A &f64, lda int){
     C.cblas_dger(order, m, n, alpha, &x[0], incx, &y[0], incy, &A[0], lda)
 }
+//[inline]
+pub fn strsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]f32, lda int, x &[]f32, incx int){
+    C.cblas_strsv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
+}
+//[inline]
+pub fn dtrsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]f64, lda int, x &[]f64, incx int){
+    C.cblas_dtrsv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
+}
+//[inline]
+pub fn strmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]f32, lda int, x &[]f32, incx int){
+    C.cblas_strmv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
+}
+//[inline]
+pub fn dtrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &[]f64, lda int, x &[]f64, incx int){
+    C.cblas_dtrmv(order, uplo, transA, diag, n, &A[0], lda, &x[0], incx)
+}
+
+//[inline]
+//[inline]
+
 /*
-pub fn cgeru(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
-pub fn cgerc(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
-pub fn zgeru(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
-pub fn zgerc(order ORDER, m int, n int, alpha voidptr, x voidptr, incx int, y voidptr, incy int, A voidptr, lda int)
-pub fn strsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &f32, lda int, x &f32, incx int)
-pub fn dtrsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &f64, lda int, x &f64, incx int)
-pub fn ctrsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A voidptr, lda int, x voidptr, incx int)
-pub fn ztrsv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A voidptr, lda int, x voidptr, incx int)
-pub fn strmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &f32, lda int, x &f32, incx int)
-pub fn dtrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A &f64, lda int, x &f64, incx int)
-pub fn ctrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A voidptr, lda int, x voidptr, incx int)
-pub fn ztrmv(order ORDER, uplo UPLO, transA TRANSPOSE, diag DIAG, n int, A voidptr, lda int, x voidptr, incx int)
 pub fn ssyr(order ORDER, uplo UPLO, n int, alpha f32, x &f32, incx int, A &f32, lda int)
 pub fn dsyr(order ORDER, uplo UPLO, n int, alpha f64, x &f64, incx int, A &f64, lda int)
 pub fn cher(order ORDER, uplo UPLO, n int, alpha f32, x voidptr, incx int, A voidptr, lda int)
