@@ -178,11 +178,11 @@ pub fn dsyr(order ORDER, uplo UPLO, n int, alpha f64, x &[]f64, incx int, A &[]f
 }
 //[inline]
 pub fn ssyr2(order ORDER, uplo UPLO,n int, alpha f32, x &[]f32, incx int, y &[]f32, incy int, A &[]f32, lda int){
-    C.cblas_ssyr2(order, uplo, n, &alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+    C.cblas_ssyr2(order, uplo, n, alpha, &x[0], incx, &y[0], incy, &A[0], lda)
 }
 //[inline]
 pub fn dsyr2(order ORDER, uplo UPLO, n int, alpha f64, x &[]f64, incx int, y &[]f64, incy int, A &[]f64, lda int){
-    C.cblas_dsyr2(order, uplo, n, &alpha, &x[0], incx, &y[0], incy, &A[0], lda)
+    C.cblas_dsyr2(order, uplo, n, alpha, &x[0], incx, &y[0], incy, &A[0], lda)
 }
 /*
 pub fn sgbmv(order ORDER, transA TRANSPOSE, m int, n int, KL int, KU int, alpha f32, A &f32, lda int, x &f32, incx int, beta f32, y &f32, incy int)
